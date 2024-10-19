@@ -1,0 +1,8 @@
+1. icache miss -- do we freeze if_id register?
+
+2. how to set load signals for pipeline registers. we thought
+   to tie it to dmem_resp, but this would be incorrect on cold starts
+   and on long icache misses.
+
+3. moving address calculation earlier for jal and jalr? right now we have
+   to flush because we don't have the target address ready until execute

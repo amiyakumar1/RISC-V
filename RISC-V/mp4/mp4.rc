@@ -1,0 +1,135 @@
+Magic 271485
+Revision Verdi_R-2020.12-SP1-1
+
+; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
+viewPort 0 25 1920 506 180 65
+
+; File list:
+; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
+openDirFile -d / "" "/home/smujta6/ece411/fa23_ece411_group7/mp4/sim/dump.fsdb"
+
+; file time scale:
+; fileTimeScale ### s|ms|us|ns|ps
+
+; signal spacing:
+signalSpacing 5
+
+; windowTimeUnit is used for zoom, cursor & marker
+; waveform viewport range
+zoom 102863848.906132 103165807.343632
+cursor 102980000.000000
+marker 0.000000
+
+; user define markers
+; userMarker time_pos marker_name color linestyle
+; visible top row signal index
+top 0
+; marker line index
+markerPos 68
+
+; event list
+; addEvent event_name event_expression
+; curEvent event_name
+
+
+
+COMPLEX_EVENT_BEGIN
+
+
+COMPLEX_EVENT_END
+
+
+
+; toolbar current search type
+; curSTATUS search_type
+curSTATUS ByChange
+
+
+addGroup "G1"
+activeDirFile "" "/home/smujta6/ece411/fa23_ece411_group7/mp4/sim/dump.fsdb"
+addSignal -h 15 /top_tb/dut/CPU/clk
+addSignal -h 15 -holdScope rst
+addGroup "FETCH"
+addSignal -h 15 /top_tb/dut/CPU/FETCH/pc[31:0]
+addSignal -h 15 -holdScope pcmux_out[31:0]
+addSignal -h 15 -holdScope alu_out[31:0]
+addSignal -h 15 /top_tb/dut/CPU/imem_address[31:0]
+addSignal -h 15 -holdScope imem_rdata[31:0]
+addSignal -h 15 -holdScope imem_read
+addSignal -h 15 -holdScope imem_resp
+addSignal -h 15 /top_tb/dut/CPU/FETCH/if_id_next.valid
+addSignal -h 15 -holdScope ctrl_hazard
+addGroup "DECODE"
+addSignal -h 15 -UNSIGNED /top_tb/dut/CPU/DECODE/instr.opcode[6:0]
+addSignal -h 15 -holdScope if_id.reg_out.pc_out[31:0]
+addSignal -h 15 -holdScope if_id.reg_out.pcmux_out[31:0]
+addSignal -h 15 -holdScope instr.rd[4:0]
+addSignal -h 15 -holdScope instr.rs1[4:0]
+addSignal -h 15 -holdScope instr.rs2[4:0]
+addSignal -h 15 -holdScope id_ex_next.reg_out.rs1_data[31:0]
+addSignal -h 15 -holdScope id_ex_next.reg_out.rs2_data[31:0]
+addSignal -h 15 -holdScope instr.i_imm[31:0]
+addSignal -h 15 /top_tb/dut/CPU/DECODE/REGFILE/data[0:31]
+addGroup "EXECUTE"
+addSignal -h 15 -UNSIGNED /top_tb/dut/CPU/EXECUTE/instruction.opcode[6:0]
+addSignal -h 15 -holdScope pc_out[31:0]
+addSignal -h 15 -holdScope ex_mem_next.reg_out.pcmux_out[31:0]
+addSignal -h 15 -holdScope instruction.rs1[4:0]
+addSignal -h 15 -holdScope instruction.rs2[4:0]
+addSignal -h 15 -holdScope instruction.rd[4:0]
+addSignal -h 15 -holdScope rs1_data[31:0]
+addSignal -h 15 -holdScope rs2_data[31:0]
+addSignal -h 15 -holdScope alu_out[31:0]
+addSignal -h 15 -holdScope alumux1_out[31:0]
+addSignal -h 15 -holdScope alumux2_out[31:0]
+addSignal -h 15 -holdScope ex_mem_next.reg_out.rs1_data[31:0]
+addSignal -h 15 -holdScope ex_mem_next.reg_out.rs2_data[31:0]
+addSignal -h 15 -holdScope forwardA[1:0]
+addSignal -h 15 -holdScope forwardB[1:0]
+addSignal -h 15 -UNSIGNED -UDEC -holdScope ex_mem_next.instr.rs1[4:0]
+addSignal -h 15 -UNSIGNED -UDEC -holdScope ex_mem_next.instr.rs2[4:0]
+addSignal -h 15 -holdScope ex_mem_next.instr.rd[4:0]
+addSignal -h 15 -holdScope ctrl.alumux2_sel[2:0]
+addSignal -h 15 -holdScope instruction.s_imm[31:0]
+addSignal -h 15 -holdScope wb_rd_data[31:0]
+addSignal -h 15 -holdScope mem_rd_data[31:0]
+addGroup "MEMORY"
+addSignal -h 15 -UNSIGNED /top_tb/dut/CPU/MEMORY/ex_mem.instr.opcode[6:0]
+addSignal -h 15 -holdScope pc_out[31:0]
+addSignal -h 15 -holdScope ex_mem.reg_out.pcmux_out[31:0]
+addSignal -h 15 -holdScope alu_out[31:0]
+addSignal -h 15 -holdScope marmux_out[31:0]
+addSignal -h 15 -holdScope dmem_addr[31:0]
+addSignal -h 15 -holdScope rmask[3:0]
+addSignal -h 15 -holdScope wmask[3:0]
+addSignal -h 15 -holdScope dmem_rdata[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope dmem_wdata[31:0]
+addSignal -h 15 -holdScope ex_mem.valid
+addSignal -h 15 /top_tb/dut/CPU/dmem_read
+addSignal -h 15 -holdScope dmem_write
+addSignal -h 15 -holdScope dmem_resp
+addSignal -h 15 /top_tb/dut/CPU/MEMORY/mem_wb_next.reg_out.rs1_data[31:0]
+addGroup "WRITEBACK"
+addSignal -h 15 -UNSIGNED -HEX /top_tb/dut/CPU/WRITEBACK/order[63:0]
+addSignal -h 15 -UNSIGNED -holdScope instruction.opcode[6:0]
+addSignal -h 15 -holdScope mem_wb.reg_out.pc_out[31:0]
+addSignal -h 15 -holdScope mem_wb.reg_out.pcmux_out[31:0]
+addSignal -h 15 -holdScope mem_wb.ir[31:0]
+addSignal -h 15 -holdScope mem_wb.valid
+addSignal -h 15 -holdScope ctrl.regfilemux_sel[3:0]
+addSignal -h 15 -holdScope regfilemux_out[31:0]
+addSignal -h 15 -holdScope instruction.rs1[4:0]
+addSignal -h 15 -holdScope instruction.rs2[4:0]
+addSignal -h 15 -holdScope instruction.rd[4:0]
+addSignal -h 15 -holdScope instruction.i_imm[31:0]
+addSignal -h 15 -holdScope instruction.s_imm[31:0]
+addSignal -h 15 -holdScope instruction.u_imm[31:0]
+addSignal -h 15 -holdScope mem_wb.reg_out.rs1_data[31:0]
+addSignal -h 15 -holdScope mem_wb.reg_out.rs2_data[31:0]
+addSignal -h 15 /top_tb/dut/CPU/DECODE/REGFILE/data[0:31]
+addSignal -h 15 /top_tb/dut/CPU/WRITEBACK/alu_out[31:0]
+addGroup "G8"
+
+; getSignalForm Scope Hierarchy Status
+; active file of getSignalForm
+

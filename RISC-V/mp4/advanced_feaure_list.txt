@@ -1,0 +1,7 @@
+{"pipelined_cache":8,
+"local_branch_pred":2, // scale down
+"global_two_level":3,
+"BTB":4,
+"m_ext":4,
+"L2_cache":2,
+"prefetcher_next_line":4}

@@ -1,0 +1,111 @@
+Magic 271485
+Revision Verdi_R-2020.12-SP1-1
+
+; Window Layout <x> <y> <width> <height> <signalwidth> <valuewidth>
+viewPort 0 25 1920 736 180 65
+
+; File list:
+; openDirFile [-d delimiter] [-s time_offset] [-rf auto_bus_rule_file] path_name file_name
+openDirFile -d / "" "/home/amiyak2/fa23_ece411_amiyak2/fa23_ece411_group7/mp4/sim/dump.fsdb"
+
+; file time scale:
+; fileTimeScale ### s|ms|us|ns|ps
+
+; signal spacing:
+signalSpacing 5
+
+; windowTimeUnit is used for zoom, cursor & marker
+; waveform viewport range
+zoom 377400.000000 747400.000000
+cursor 460000.000000
+marker 0.000000
+
+; user define markers
+; userMarker time_pos marker_name color linestyle
+userMarker 420000 M1 ID_GREEN5 long_dashed
+
+; visible top row signal index
+top 0
+; marker line index
+markerPos 16
+
+; event list
+; addEvent event_name event_expression
+; curEvent event_name
+
+
+
+COMPLEX_EVENT_BEGIN
+
+
+COMPLEX_EVENT_END
+
+
+
+; toolbar current search type
+; curSTATUS search_type
+curSTATUS ByValue
+
+
+addGroup "G1"
+activeDirFile "" "/home/amiyak2/fa23_ece411_amiyak2/fa23_ece411_group7/mp4/sim/dump.fsdb"
+addSignal -h 15 /top_tb/dut/CPU/clk
+addSignal -h 15 -holdScope rst
+addGroup "FETCH"
+addSignal -h 15 /top_tb/dut/CPU/FETCH/pc[31:0]
+addSignal -h 15 -holdScope pcmux_out[31:0]
+addSignal -h 15 -UNSIGNED -HEX /top_tb/dut/CPU/imem_address[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope imem_rdata[31:0]
+addSubGroup "/top_tb/dut/CPU/imem_rdata@102635000(1ps)#ActiveDriver"
+addSignal -h 15 -UNSIGNED -HEX /top_tb/dut/CPU/imem_rdata[31:0]
+addSignal -h 15 /top_tb/dut/BUS_ADAPTOR_I/address[4:2]
+addSignal -h 15 -UNSIGNED -HEX -holdScope mem_rdata256[255:0]
+addSubGroup "/top_tb/dut/BUS_ADAPTOR_I/mem_rdata256@102535000(1ps)#ActiveDriver"
+addSignal -h 15 -UNSIGNED -HEX /top_tb/dut/BUS_ADAPTOR_I/mem_rdata256[255:0]
+addSignal -h 15 /top_tb/dut/I_CACHE/data_out[0:3]
+addSignal -h 15 -UNSIGNED -HEX -holdScope way[1:0]
+addSignal -h 15 -UNSIGNED -holdScope state[31:0]
+addSubGroup "/top_tb/dut/I_CACHE/way@102635000(1ps)#ActiveDriver"
+addSignal -h 15 -UNSIGNED -HEX /top_tb/dut/I_CACHE/way[1:0]
+addSignal -h 15 -holdScope compare[3:0]
+addSignal -h 15 -holdScope compare[0]
+addSignal -h 15 -holdScope compare[1]
+addSignal -h 15 -holdScope compare[2]
+addSignal -h 15 -holdScope plru_out[0:15]
+addSignal -h 15 -holdScope set[3:0]
+endSubGroup "/top_tb/dut/I_CACHE/way@102635000(1ps)#ActiveDriver"
+endSubGroup "/top_tb/dut/BUS_ADAPTOR_I/mem_rdata256@102535000(1ps)#ActiveDriver"
+endSubGroup "/top_tb/dut/CPU/imem_rdata@102635000(1ps)#ActiveDriver"
+addSignal -h 15 /top_tb/dut/I_CACHE/set[3:0]
+addSignal -h 15 -holdScope mem_address[31:0]
+addSignal -h 15 -UNSIGNED -HEX -holdScope way[1:0]
+addSignal -h 15 -holdScope hit
+addSignal -h 15 /top_tb/dut/CPU/imem_read
+addSignal -h 15 -holdScope imem_resp
+addSignal -h 15 /top_tb/dut/CPU/EXECUTE/br_jmp_en
+addGroup "DECODE"
+addSignal -c ID_PURPLE7 -ls solid -lw 1 -h 15 -UNSIGNED -HEX /top_tb/dut/CPU/DECODE/if_id.reg_out.pc_out[31:0]
+addSignal -c ID_ORANGE6 -ls solid -lw 1 -h 15 -UNSIGNED -holdScope instr.opcode[6:0]
+addSignal -c ID_BLUE6 -ls solid -lw 1 -h 15 -holdScope id_ex_next.valid
+addGroup "EXECUTE"
+addSignal -c ID_PURPLE7 -ls solid -lw 1 -h 15 -UNSIGNED -HEX /top_tb/dut/CPU/EXECUTE/pc_out[31:0]
+addSignal -c ID_ORANGE6 -ls solid -lw 1 -h 15 -UNSIGNED -holdScope instruction.opcode[6:0]
+addSignal -c ID_BLUE6 -ls solid -lw 1 -h 15 -holdScope id_ex.valid
+addSignal -h 15 -holdScope alu_out[31:0]
+addGroup "MEMORY"
+addSignal -c ID_PURPLE7 -ls solid -lw 1 -h 15 -UNSIGNED -HEX /top_tb/dut/CPU/MEMORY/pc_out[31:0]
+addSignal -c ID_ORANGE6 -ls solid -lw 1 -h 15 -UNSIGNED -holdScope ex_mem.instr.opcode[6:0]
+addSignal -c ID_BLUE6 -ls solid -lw 1 -h 15 -holdScope ex_mem.valid
+addGroup "WRITEBACK"
+addSignal -c ID_PURPLE7 -ls solid -lw 1 -h 15 -UNSIGNED -HEX /top_tb/dut/CPU/WRITEBACK/mem_wb.reg_out.pc_out[31:0]
+addSignal -c ID_ORANGE6 -ls solid -lw 1 -h 15 -UNSIGNED -holdScope instruction.opcode[6:0]
+addSignal -c ID_BLUE6 -ls solid -lw 1 -h 15 -holdScope mem_wb.valid
+addSignal -h 15 -holdScope mem_wb.reg_out.pcmux_out[31:0]
+addSignal -h 15 -holdScope mem_wb.reg_out.rs1_data[31:0]
+addSignal -h 15 -holdScope mem_wb.reg_out.rs2_data[31:0]
+addGroup "G8"
+addGroup "G9"
+
+; getSignalForm Scope Hierarchy Status
+; active file of getSignalForm
+
